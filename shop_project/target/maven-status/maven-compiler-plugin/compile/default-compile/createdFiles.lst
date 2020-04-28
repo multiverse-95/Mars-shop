@@ -1,0 +1,10 @@
+rest\Config.class
+rest\model\entity\EStudent.class
+rest\Service.class
+rest\model\Model.class
+shop\shop_project\resources\JavaEE8Resource.class
+shop\shop_project\JAXRSConfiguration.class
+rest\model\IModel.class
+rest\Product.class
+rest\User.class
+rest\Category.class
