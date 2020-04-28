@@ -1,0 +1,114 @@
+.blockall {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    opacity: 0.8;
+    background: #000;
+    cursor: pointer;
+    z-index: 999990;
+}
+.inputs-form{
+    display: flex;
+    flex-direction: column;
+    border: none;
+    margin: 0 0 10px 0;    
+}
+.inputs-form input{
+    margin: 0 30px 10px 30px;
+    border-radius: 8px;
+    padding: 10px 10px 10px 10px;
+    border: 0;
+    box-shadow: 0 0 4px 0 rgba(0,0,0,0.5);
+}
+.login-header p{
+    width: auto;
+    color: white;
+    margin: 0 0 20px 0;
+    font-size: 30px;
+    padding: 4px 40px 4px 40px;
+    text-align: center;
+}
+.login-header{
+    border-radius: 8px 8px 0 0;
+    padding: 0 70px 0 70px;
+    width: auto;
+    background-color: #bc2a3a;
+    margin: 0;
+}
+.login-form{
+    display: none;
+    z-index: 999992;
+    background-color: white;
+    position: absolute;
+    left: 50%; top: 50%; 
+    transform: translate(-50%, -50%);
+    border-radius: 8px;
+    box-shadow: 0 0 4px 0 rgba(0,0,0,0.5);
+    border: none;
+}
+.reg-form{
+    display: none;
+    z-index: 999992;
+    background-color: white;
+    position: absolute;
+    left: 50%; top: 50%; 
+    transform: translate(-50%, -50%);
+    border-radius: 8px;
+    box-shadow: 0 0 4px 0 rgba(0,0,0,0.5);
+    border: none;
+}
+.signup-ref p, a{
+    margin: 0 0 0 2px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    font-size: 12px;
+    text-decoration: none;
+}
+.signup-ref{
+    margin: 0 0 20px 0;
+}
+#SignIn, #SignUp{
+    width: 100%;
+    color: white;
+    background-color: #bc2a3a;
+    border-radius: 0 0 8px 8px;
+    font-size: 20px;
+    padding: 7px 0 7px 0;
+    border: 0;
+    margin: 0;
+}
+#SignIn:hover{
+    width: 100%;
+    color: white;
+    background-color: #B22222;
+    border-radius: 0 0 8px 8px;
+    font-size: 20px;
+    padding: 7px 0 7px 0;
+    border: 0;
+    margin: 0;
+}
+#SignIn:active{
+    box-shadow: inset 1px 1px 5px -1px lightgray;
+}
+#SignIn:focus{
+    outline: none;
+}
+#SignUp:hover{
+    width: 100%;
+    color: white;
+    background-color: #B22222;
+    border-radius: 0 0 8px 8px;
+    font-size: 20px;
+    padding: 7px 0 7px 0;
+    border: 0;
+    margin: 0;
+}
+#SignUp:active{
+    box-shadow: inset 1px 1px 5px -1px lightgray;
+}
+#SignUp:focus{
+    outline: none;
+}

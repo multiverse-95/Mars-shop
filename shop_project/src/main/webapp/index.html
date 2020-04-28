@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Home</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        
+        <link rel = "stylesheet" href = "https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+         <script src="https://code.jquery.com/jquery-3.5.0.js"
+         integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc="
+         crossorigin="anonymous"></script>
+         <script
+         src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+         integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+         crossorigin="anonymous"></script>
+
+         <link rel="stylesheet" href="styles/style.css">
+        <link rel="stylesheet" href="styles/lk_style.css">
+        <link rel="stylesheet" href="styles/auth_style.css">
+
+        
+        <script src="script.js"></script>  
+        <script src="lk_script.js"></script>    
+
+    </head>
+    <body>
+      <div class="tytoknoall"></div>
+        <div  class="login-form">
+          <div class="login-header">
+              <p>Авторизация</p>
+          </div>
+           <div class="inputs-form">
+             <input id="inp-login" type="text" name="login" placeholder="Логин">
+             <input id="inp-pass" type="password" name="pass" placeholder="Пароль">
+           </div>
+           <div class="signup-ref">
+               <p>
+                 Впервые здесь? Тогда<a href=# id="reg-ref">зарегистрируйтесь</a><br>
+               </p>
+
+           </div>
+
+           <input id="SignIn" type="button" value="Выполнить вход">
+
+        </div>
+        <div  class="reg-form">
+          <div class="login-header">
+              <p>Форма регистрации</p>
+          </div>
+            <div class="inputs-form">
+              <input id="inp-login" type="text" name="login" placeholder="Логин">
+              <input id="inp-email" type="text" name="login" placeholder="Email">
+              <input id="inp-pass" type="password" name="pass" placeholder="Пароль">
+              <input id="inp-pass-rep" type="password" name="pass" placeholder="Повтор пароля">
+           </div>
+
+           <input id="SignUp" type="button" value="Зарегестрироваться">
+
+        </div>
+
+
+      <div class="content-wrap">
+        <header>
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-3">
+                <div class="logo">
+                  <img src="images/logo.png" onclick="toCategoryes()">
+                </div>
+              </div>
+              <div class="col-lg-7">
+                <div class="search">
+                  <input id="autocomplete-1" class="search-text" placeholder="Поиск..." type="text">
+                  <input class="search-btn" value="Найти" type="button">
+                </div>
+              </div>
+              <div class="col-lg-2">
+                <div class="lk">
+                  <div class="lk-onClk"> 
+                        <div class="lk-wrap"><img src="images/user.png"></div>
+                        <p id="user_name">Гость</p>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+        
+        <section class="nav-wrap">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="nav-links">
+                  MARS / Каталог
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="main">
+          
+        </section>
+  
+  
+      </div>
+
+      <footer>
+        <div class="container">
+          <div class="row development">
+            <div class="col-lg-6">
+              <div class="footer-title">MARS © 2020 Все права защищены</div>
+            </div>
+            <div class="col-lg-6">
+              <div class="footer-developers">Разработано Славкой, Вовкой и Никиткой</div>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    </body>
+</html>
