@@ -12,4 +12,9 @@ public interface IModel  {
   Product GetProduct(String id) throws Exception;
   ArrayList<Product> SearchProducts(String search) throws Exception;
   User Auth(User user) throws Exception;
+  void InsertDBProduct(Product product) throws Exception;
+  void UpdateDBProduct(Product product) throws Exception;
+  void DeleteDBProduct(Product product) throws Exception;
+  ArrayList<Product> GetProductsBasket(String id) throws Exception;
+  void AddProductBasket(Product product) throws Exception;
 }

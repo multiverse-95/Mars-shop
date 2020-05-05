@@ -15,6 +15,7 @@ public class User {
     private String avatar;
     private int mail_index;
     private boolean flag;
+    private int role_number;
 
     public void setPhone_number(long phone_number) {
         this.phone_number = phone_number;
@@ -103,4 +104,14 @@ public class User {
     public void setMail_index(int mail_index) {
         this.mail_index = mail_index;
     } 
+    public int getRole_number() {
+        return role_number;
+    }
+    
+    public void setRole_number(int role_number) {
+        this.role_number = role_number;
+    }
+    
+    
+    
 } 

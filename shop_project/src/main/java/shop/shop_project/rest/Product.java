@@ -9,6 +9,11 @@ public class Product
     private ArrayList<String> description;
     private String image;
     private Integer price;
+    private Integer category_id;
+    private Integer image_id;
+    private ArrayList<String> feature_name;
+    private ArrayList<String> feature_value;
+    private long user_id;
 
     public long getId() {
         return id;
@@ -48,5 +53,44 @@ public class Product
 
     public void setPrice(Integer price) {
         this.price = price;
+    }	
+    
+    public Integer getCategory_id() {
+        return category_id;
+    }
+
+    public void setCategory_id(Integer category_id) {
+        this.category_id = category_id;
+    }	
+    public Integer getImage_id() {
+        return image_id;
+    }
+
+    public void setImage_id(Integer image_id) {
+        this.image_id = image_id;
+    }	
+    
+    public ArrayList<String> getFeature_name() {
+        return feature_name;
+    }
+
+    public void setFeature_name(ArrayList<String> feature_name) {
+        this.feature_name = feature_name;
+    }	
+    
+    public ArrayList<String> getFeature_value() {
+        return feature_value;
+    }
+
+    public void setFeature_value(ArrayList<String> feature_value) {
+        this.feature_value = feature_value;
+    }
+    
+    public long getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(long user_id) {
+        this.user_id = user_id;
     }	
 }

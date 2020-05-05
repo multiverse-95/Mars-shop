@@ -155,5 +155,158 @@ public class Service {
     return Response.ok(jsonb.toJson(user_data)).build(); 
 
   }
+  
+  //Получение категории с БД
+  @POST   
+  @Path("/GetProductsBasket")
+  @Consumes("application/json")
+  @Produces("application/json")
+  public Response GetProductsBasket(String id) 
+  {            
+
+    Jsonb jsonb = JsonbBuilder.create(); 
+    ArrayList<Product> products= new ArrayList<>();      
+
+    try {  
+      products = model.GetProductsBasket(id);	  	   	 
+    }
+    catch (Exception e) {
+      return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();	             
+    }    
+    return Response.ok(jsonb.toJson(products)).build(); 
+
+  }
+  
+   //Добавление данных в БД
+ @POST   
+ @Path("/AddProductBasket")
+ @Consumes("application/json")
+ @Produces("application/json")
+ public Response AddProductBasket(String productJSON) 
+ {            
+   Jsonb jsonb = JsonbBuilder.create();          
+    Product product = new Product();
+   String resultJSON;
+   try {  
+      try { 
+       product = jsonb.fromJson(productJSON, Product.class);                    
+      }
+      catch (Exception e) {
+        throw new Exception("Error while JSON transforming.");  
+      }
+
+      model.AddProductBasket(product);
+
+      
+      
+	  resultJSON = jsonb.toJson(product);	  	 
+   }
+   catch (JsonbException e) {
+    return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();	             
+   }
+   catch (Exception e) {
+    return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();	             
+   }    
+   return Response.ok(resultJSON).build();           
+ }
+  
+  //Добавление данных в БД
+ @POST   
+ @Path("/addProduct")
+ @Consumes("application/json")
+ @Produces("application/json")
+ public Response InsertfromDB(String productJSON) 
+ {            
+   Jsonb jsonb = JsonbBuilder.create();          
+    Product product = new Product();
+   String resultJSON;
+   try {  
+      try { 
+       product = jsonb.fromJson(productJSON, Product.class);                    
+      }
+      catch (Exception e) {
+        throw new Exception("Error while JSON transforming.");  
+      }
+
+      model.InsertDBProduct(product);
+
+      
+      
+	  resultJSON = jsonb.toJson(product);	  	 
+   }
+   catch (JsonbException e) {
+    return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();	             
+   }
+   catch (Exception e) {
+    return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();	             
+   }    
+   return Response.ok(resultJSON).build();           
+ }
+ 
+  //Добавление данных в БД
+ @POST   
+ @Path("/UpdateProduct")
+ @Consumes("application/json")
+ @Produces("application/json")
+ public Response UpdatefromDB(String productJSON) 
+ {            
+   Jsonb jsonb = JsonbBuilder.create();          
+    Product product = new Product();
+   String resultJSON;
+   try {  
+      try { 
+       product = jsonb.fromJson(productJSON, Product.class);                    
+      }
+      catch (Exception e) {
+        throw new Exception("Error while JSON transforming.");  
+      }
+
+      model.UpdateDBProduct(product);
+
+      
+      
+	  resultJSON = jsonb.toJson(product);	  	 
+   }
+   catch (JsonbException e) {
+    return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();	             
+   }
+   catch (Exception e) {
+    return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();	             
+   }    
+   return Response.ok(resultJSON).build();           
+ }
+ 
+  //Добавление данных в БД
+ @POST   
+ @Path("/DeleteProduct")
+ @Consumes("application/json")
+ @Produces("application/json")
+ public Response DeletefromDB(String productJSON) 
+ {            
+   Jsonb jsonb = JsonbBuilder.create();          
+    Product product = new Product();
+   String resultJSON;
+   try {  
+      try { 
+       product = jsonb.fromJson(productJSON, Product.class);                    
+      }
+      catch (Exception e) {
+        throw new Exception("Error while JSON transforming.");  
+      }
+
+      model.DeleteDBProduct(product);
+
+      
+      
+	  resultJSON = jsonb.toJson(product);	  	 
+   }
+   catch (JsonbException e) {
+    return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();	             
+   }
+   catch (Exception e) {
+    return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();	             
+   }    
+   return Response.ok(resultJSON).build();           
+ }
  
 }
