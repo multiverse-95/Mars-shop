@@ -32,6 +32,11 @@ header{
     height: 100%;
     width: auto;
 }
+.logo img:hover{
+    cursor: pointer;
+    height: 100%;
+    width: auto;
+}
 .search{
     display: flex;
     justify-content: center;
@@ -166,6 +171,16 @@ header{
     height: 170px;
     margin: 15px;
 }
+.product-img:hover{
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: 170px;
+    margin: 15px;
+}
+
 .product-img img{
     height: 100%;
     width: auto;
@@ -224,10 +239,22 @@ header{
     width: 40px;
     margin-top: 30px;
 }
+.favorite:hover{ 
+    width: 37px; 
+    height: 37px; 
+    cursor: pointer;
+}
 .buy{
     height: 40px;
     width: 40px;
     margin-top: 10px;
+     
+}
+
+.buy:hover{ 
+    width: 37px; 
+    height: 37px; 
+    cursor: pointer;
 }
 
 /* product */
@@ -249,6 +276,17 @@ header{
     height: 370px;
     margin: 15px;
 }
+
+.prod-img:hover{
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: 370px;
+    margin: 15px;
+}
+
 .prod-img img{
     height: auto;
     width: auto;

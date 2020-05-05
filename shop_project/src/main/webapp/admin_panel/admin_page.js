@@ -76,6 +76,13 @@ function toCategory(id, title){
           arrayProdTitle.push($(this).html());
         });
         
+        $(".product-img").each(function(key){
+          $(this).click(function(){
+              toProduct(arrayProdName[key], arrayProdTitle[key], id, title);
+              
+          })
+        });
+        
       $(".favorite").each(function(key){
           $(this).click(function(){
               //alert(arrayProdName[key])
@@ -450,6 +457,8 @@ function SearchProducts(){
 }
 
 function GoSearchProducts(search){
+    var arrayProdName=[];
+    var arrayProdTitle=[];
   fetch('/shop_project/api/goSearch',{method: 'POST', headers: {'Content-Type': 'application/json;charset=utf-8'}, body: String(search)})
   .then(function(response) { 
     if (response.ok) {
@@ -461,6 +470,7 @@ function GoSearchProducts(search){
       }	       
    })
   .then(function(data) {
+    var category_id;
     var html_start = "<div class=\"container\"><div class=\"row\"><div class=\"col-lg-12\"><div class=\"section-title\">Результаты поиска</div></div></div><div class=\"row\"><div class=\"col-lg-12\">"
     var html_content = "";
     var html_end = "</div></div></div>"
@@ -470,13 +480,40 @@ function GoSearchProducts(search){
         desc += data[i].description[j] + " - " + data[i].description[j+1] + ","
       }
       desc = desc.substr(0, desc.length - 1) + "]"
-      html_content+="<div class=\"product\"><div class=\"row\"><div class=\"col-lg-3\"><div class=\"product-img\"><img src=\"images/"+data[i].image+"\"></div></div><div class=\"col-lg-7\"><div class=\"product-desc\"><div id=\""+data[i].id+"\" class=\"product-name\">"+data[i].name+"</div><div class=\"product-features\">"+desc+"</div></div></div><div class=\"col-lg-2\"><div class=\"buy-info\"><div class=\"product-price\">"+data[i].price+" р</div><div class=\"favorite\"><div class=\"buy-img-wrap\"><img src=\"images/favorite.png\"></div></div><div class=\"buy\"><div class=\"buy-img-wrap\"><img src=\"images/buy.png\"></div></div></div></div></div></div>"
-    }
+      html_content+="<div class=\"product\"><div class=\"row\"><div class=\"col-lg-3\"><div class=\"product-img\"><img src=\"images/"+data[i].image+"\"></div></div><div class=\"col-lg-7\"><div class=\"product-desc\"><div id=\""+data[i].id+"\" class=\"product-name\">"+data[i].name+"</div><div class=\"product-features\">"+desc+"</div></div></div><div class=\"col-lg-2\"><div class=\"buy-info\"><div class=\"product-price\">"+data[i].price+" р</div><div class=\"favorite\"><div class=\"buy-img-wrap\"><img src=\"images/update.png\"></div></div><div class=\"buy\"><div class=\"buy-img-wrap\"><img src=\"images/delete.png\"></div></div></div></div></div></div>"
+      category_id=data[i].category_id;
+      }
     $('.main').html(html_start + html_content + html_end)
 
     $('.product-name').click(function() {
       toProduct($(this).attr("id"), $(this).html(), "", "");
     })
+    
+    $(".product-name").each(function(){
+          arrayProdName.push($(this).attr("id"));
+          arrayProdTitle.push($(this).html());
+        });
+        
+        $(".product-img").each(function(key){
+          $(this).click(function(){
+              toProduct(arrayProdName[key], arrayProdTitle[key], '', '');
+              
+          })
+        });
+        
+      $(".favorite").each(function(key){
+          $(this).click(function(){
+              //alert(arrayProdName[key])
+              setParUpdateProduct(arrayProdName[key], arrayProdTitle[key], '', '');
+          })
+        });
+         $(".buy").each(function(key){
+          $(this).click(function(){
+              //alert(arrayProdName[key])
+              DeleteProduct(arrayProdName[key], arrayProdTitle[key], category_id, '');
+              //setParUpdateProduct(arrayProdName[key], arrayProdTitle[key], id, title);
+          })
+        });
     $('.nav-links').html("MARS / <span onclick=\"toCategoryes()\" class=\"nav_link\">Каталог</span>  ")
 
     

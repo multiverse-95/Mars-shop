@@ -108,6 +108,16 @@
     padding: 10px 0 10px 0;
     border-bottom: 1px solid lightgray;
 }
+
+.lk-order-description:hover{
+    cursor: pointer;
+    margin: 0;
+    width: 100%;
+    display: flex; 
+    flex-direction: row;  
+    border-radius: 8px 8px 8px 8px; 
+    box-shadow: 0 0 5px 0 rgba(0,0,0,1);    
+}
 .lk-order-description p{
     margin: 0;
 }
@@ -119,4 +129,68 @@
     font-size: 17px;
     margin: 1px 1px 1px 10px;
 }
+
+#pen_name{
+    padding: 3px; 
+    width: 20px; 
+    height: 20px; 
+    border-radius: 8px 0 8px 0; 
+    box-shadow: 0 0 4px 0 rgba(0,0,0,0.5);
+}
+#pen_name:hover{
+    padding: 3px; 
+    width: 20px; 
+    height: 20px; 
+    border-radius: 8px 0 8px 0; 
+    box-shadow: 0 0 8px 0 rgba(0,0,0,1);    
+}
+#pen_address{
+    padding: 3px; 
+    width: 20px; 
+    height: 20px; 
+    border-radius: 8px 0 8px 0; 
+    box-shadow: 0 0 4px 0 rgba(0,0,0,0.5);
+}
+#pen_address:hover{
+    padding: 3px; 
+    width: 20px; 
+    height: 20px; 
+    border-radius: 8px 0 8px 0; 
+    box-shadow: 0 0 8px 0 rgba(0,0,0,1); 
+}
+
+#save_name{
+    display: none; 
+    padding: 0.1px; 
+    width: 20px; 
+    height: 20px; 
+    border-radius: 8px 0 8px 0; 
+    margin: 0 0 0 3px; 
+    box-shadow: 0 0 4px 0 rgba(0,0,0,0.5);
+}
+#save_name:hover{
+    box-shadow: 0 0 8px 0 rgba(0,0,0,1); 
+}
+
+#save_address{
+    display: none; 
+    padding: 0.1px; 
+    width: 20px; 
+    height: 20px; 
+    border-radius: 8px 0 8px 0; 
+    margin: 0 0 0 3px; 
+    box-shadow: 0 0 4px 0 rgba(0,0,0,0.5);
+}
+#save_address:hover{
+    display: none; 
+    padding: 0.1px; 
+    width: 20px; 
+    height: 20px; 
+    border-radius: 8px 0 8px 0; 
+    margin: 0 0 0 3px; 
+    box-shadow: 0 0 8px 0 rgba(0,0,0,1);   
+}
+
+
+
 

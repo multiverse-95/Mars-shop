@@ -32,6 +32,11 @@ header{
     height: 100%;
     width: auto;
 }
+.logo img:hover{
+    cursor: pointer;
+    height: 100%;
+    width: auto;
+}
 .search{
     display: flex;
     justify-content: center;
@@ -166,6 +171,18 @@ header{
     height: 170px;
     margin: 15px;
 }
+
+.product-img:hover{
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: 170px;
+    margin: 15px;
+}
+
+
 .product-img img{
     height: 100%;
     width: auto;
@@ -226,8 +243,9 @@ header{
 }
 
 .favorite:hover {
-          height: 35px;
-          width: 35px;
+          height: 37px;
+          width: 37px;
+          cursor: pointer;
         }
 .buy{
     height: 40px;
@@ -236,8 +254,9 @@ header{
 }
 
 .buy:hover {
-          height: 35px;
-          width: 35px;
+          height: 37px;
+          width: 37px;
+          cursor: pointer;
         }
 
 /* product */
@@ -252,6 +271,16 @@ header{
 }
 
 .prod-img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: 370px;
+    margin: 15px;
+}
+
+.prod-img:hover{
+    cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
