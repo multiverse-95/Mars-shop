@@ -58,7 +58,7 @@ header{
     width: 20%;
     height: 36px;
     border: 0;
-    border-radius: 0 4px 4px 0;
+    border-radius: 4px 4px 4px 4px;
     background-color: #da4a52;
     color: #fff;
 }
@@ -197,7 +197,7 @@ header{
     height: 100%;
     border: 1px solid #555;
     border-radius: 8px;
-    padding: 10px;
+    padding: 5px;
 }
 .buy-img-wrap img{
     width:auto; 
@@ -224,11 +224,21 @@ header{
     width: 40px;
     margin-top: 30px;
 }
+
+.favorite:hover {
+          height: 35px;
+          width: 35px;
+        }
 .buy{
     height: 40px;
     width: 40px;
     margin-top: 10px;
 }
+
+.buy:hover {
+          height: 35px;
+          width: 35px;
+        }
 
 /* product */
 
@@ -396,6 +406,112 @@ footer {
     font-size: 14px;
     font-weight: 300;
 }
+
+        .box {
+          width: 50%;
+          height: 30px;
+          border: 1px solid #999;
+          font-size: 18px;
+          color: black;
+          background-color: white;
+          border-radius: 5px;
+          box-shadow: 4px 4px #ccc;
+          }
+
+          .table_price {
+          width:50%;
+          border-collapse: collapse;
+          border-left: 3px solid #bc2a3a;
+          border-right: 3px solid #bc2a3a;
+          border-bottom: 3px solid #bc2a3a;
+          font-family: "Lucida Grande", sans-serif;
+        }
+        .table_price caption {
+          background: #bc2a3a; 
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px;
+          padding: 10px;
+          box-shadow: 0 2px  4px 0 rgba(0,0,0,.3);
+          color: white;
+          font-family: "Roboto Slab",serif;
+          font-style: normal;
+          font-size: 26px;
+          text-align: center;
+          margin: 0;
+        }
+        .table_price td, .table_price th {
+          padding: 10px;
+        }
+        .table_price th {
+          text-align: left;
+          font-size: 18px;
+        }
+        .table_price tr:nth-child(2n) {
+          background: #E5E5E5;
+        }
+        .table_price td:last-of-type {
+          text-align: center;
+        }
+        .del_prod {
+          color: white;
+          border-radius: 4px 4px 4px 4px;
+          display: inline-block;
+          padding: 5px 10px;
+          background: #bc2a3a;
+          box-shadow: 2px 2px 0 0 #a22800;
+          position: relative;
+        }
+        .del_prod:hover {
+          border-radius: 4px 4px 4px 4px;
+          box-shadow: none;
+          top: 2px;
+          left: 2px;
+        }
+
+        .add_prod {
+          color: white;
+          border-radius: 4px 4px 4px 4px;
+          display: inline-block;
+          padding: 5px 10px;
+          background: #bc2a3a;
+          box-shadow: 2px 2px 0 0 #a22800;
+          position: relative;
+        }
+        .add_prod:hover {
+          border-radius: 4px 4px 4px 4px;
+          box-shadow: none;
+          top: 2px;
+          left: 2px;
+        }
+        .add-btn{
+        width: 20%;
+        height: 36px;
+        border: 0;
+        border-radius: 4px 4px 4px 4px;
+        background-color: #bc2a3a;
+        color: #fff;
+        }
+        .add-text{
+        border: 0;
+        border-radius: 4px 4px 4px 4px;
+        width: 50%;
+        height: 36px;
+        padding-left: 15px;
+        }
+        .add-text-name{
+        border: 0;
+        border-radius: 4px 4px 4px 4px;
+        width: 100%;
+        height: 36px;
+        padding-left: 15px;
+        }
+        .add-text-value{
+        border: 0;
+        border-radius: 4px 4px 4px 4px;
+        width: 100%;
+        height: 36px;
+        padding-left: 15px;
+        }
 
 @media (min-width: 369px) {
     .category {

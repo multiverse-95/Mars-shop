@@ -16,7 +16,7 @@ let user_data={
 };
 
 const authorizate_block = function(){
-    $(".lk-onClk").click(function(){
+    $(".lk-onClkk").click(function(){
         if (user_data.flag) ok();
         else {
             $(".login-form").css("display", "block");
@@ -65,16 +65,10 @@ const authorizate = async function(login, pass){
         if (response.ok) {
             user_data = await response.json();
             if(user_data.flag) {
-                if (user_data.role_number==2){
-                    alert("You admin!")
-                    location.href='admin_panel/admin_page.html'
-                } else {
                 await ok(); 
                 $(".login-form").css("display", "none");
                 $(".reg-form").css("display", "none");
                 $(".blockall").remove();
-                }
-                
             } else alert("Неверный логин или пароль");
         }
         else {
@@ -84,58 +78,7 @@ const authorizate = async function(login, pass){
     });
 };
 
-
- const AddProductBasket=async function (product_id){
-     //alert('Success!'+product_id)
-    await fetch('/shop_project/api/AddProductBasket',{method: 'POST', headers: {'Content-Type': 'application/json;charset=utf-8'}, body: JSON.stringify({'id':product_id, 'user_id':user_data.id})})
-  .then(async function(response) { 
-    if (response.ok) {
-      return response.json();
-      }
-        else {
-      console.log(response);
-        throw response.text();
-      }	       
-   })
-  .then(async function() {
-    alert('Добавлено в корзину!');
-    
-  })
-  .catch(function(error) {
-    console.log(error);
-    alert("Error catch: " + error);  
-    });
-};
-
 const ok = function(){
-    //alert(user_data.id)
-    fetch('/shop_project/api/GetProductsBasket',{method: 'POST', headers: {'Content-Type': 'application/json;charset=utf-8'}, body: String(user_data.id)})
-  .then(function(response) { 
-    if (response.ok) {
-      return response.json();
-      }
-        else {
-      console.log(response);
-        throw response.text();
-      }	       
-   })
-  .then(function(data) {
-      var htmlBasketProd="";
-      for (var i=0; i<data.length; i++) {
-          htmlBasketProd+=`<div class='lk-order-description'>
-                          <div><img src='images/plita.png'></div>
-                          <div style='margin: 0 0 0 20px;'>
-                              <div>
-                                <p><span>`+data[i].name+`</span></p>
-                                <p><span>x1</span></p>
-                                <p><span>Дата заказа: </span><span>12.31.2019</span></p>
-                                <div style='display: flex; align-items: flex-end; width: 100%'><p><span>Сумма заказа: </span><span>`+data[i].price+` руб</span></p></div>
-                              </div>
-                          </div>
-                      </div>
-`;
-      }
-    
     $('#user_name').html(user_data.first_name);
     $('.main').html("<div class='container lk-body'>"+
               "<div class='lk-block-data'>"+
@@ -166,7 +109,31 @@ const ok = function(){
                   "<div class='lk-suborder-header'>"+
                       "<p>На рассмотрении</p>"+
                   "</div>"+
-                  "<div class='lk-suborder-body' id='onView'>"+htmlBasketProd+
+                  "<div class='lk-suborder-body' id='onView'>"+
+                      "<div class='lk-order-description'>"+
+                          "<div><img src='images/refrigerator.png'></div>"+
+                          "<div style='margin: 0 0 0 20px;'>"+
+                              "<div>"+
+                                "<p><span>Холодос Mdawdaw2321</span></p>"+
+                                "<p><span>x1</span></p>"+
+                                "<p><span>Дата заказа: </span><span>12.31.2019</span></p>"+
+                                "<div style='display: flex; align-items: flex-end; width: 100%'><p><span>Сумма заказа: </span><span>23222руб</span></p></div>"+
+                              "</div>"+
+                          "</div>"+
+                      "</div>"+
+                      "<div class='lk-order-description'>"+
+                          "<div>"+
+                              "<img src='images/refrigerator.png'>"+
+                          "</div>"+
+                          "<div style='margin: 0 0 0 20px;'>"+
+                              "<div>"+
+                                "<p><span>Холодос Mdawdaw2321</span></p>"+
+                                "<p><span>x1</span></p>"+
+                                "<p><span>Дата заказа: </span><span>12.31.2019</span></p>"+
+                                "<div style='display: flex; align-items: flex-end; width: 100%'><p><span>Сумма заказа: </span><span>23222руб</span></p></div>"+
+                              "</div>"+
+                          "</div>"+
+                      "</div>"+
                   "</div>"+
                   "<div class='lk-suborder-header'>"+
                       "<p>В пути</p>"+
@@ -193,13 +160,5 @@ const ok = function(){
                       "</div>"+
                   "</div>"+   
               "</div>");
-    
-  })
-  .catch(function(error) {
-    console.log(error);
-    alert("Error catch: " + error);  
-    });
-    
-    
 }
 

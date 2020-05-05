@@ -18,7 +18,8 @@ function toCategoryes(){
         }	       
     })
     .then(function(data) {
-        var html_start = "<div class=\"container\"><div class=\"row\"><div class=\"col-lg-12\"><div class=\"section-title\">Каталог товаров</div></div></div><div class=\"row categoryes\">"
+        var html_start = "<div class=\"container\"><div class=\"row\"><div class=\"col-lg-12\"><div class=\"section-title\">Каталог товаров</div>\n\
+</div></div><div class=\"row categoryes\">";
         var html_content = "";
         var html_end = "</div></div>"
         for (i=0; i<data.length; i++) {
@@ -39,6 +40,8 @@ function toCategoryes(){
 }
 
 function toCategory(id, title){
+    var arrayProdName=[];
+    var arrayProdTitle=[];
   fetch('/shop_project/api/getCategory',{method: 'POST', headers: {'Content-Type': 'application/json;charset=utf-8'}, body: String(id)})
   .then(function(response) { 
     if (response.ok) {
@@ -66,6 +69,24 @@ function toCategory(id, title){
     $('.product-name').click(function() {
       toProduct($(this).attr("id"), $(this).html(), id, title);
     })
+    
+    $(".product-name").each(function(){
+          arrayProdName.push($(this).attr("id"));
+          arrayProdTitle.push($(this).html());
+        });
+        
+      $(".favorite").each(function(key){
+          $(this).click(function(){
+              alert(arrayProdName[key])
+              
+          })
+        });
+         $(".buy").each(function(key){
+          $(this).click(function(){
+              //alert(arrayProdName[key]);
+              AddProductBasket(arrayProdName[key])
+          })
+        });
 
     $('.nav-links').html("MARS / <span onclick=\"toCategoryes()\" class=\"nav_link\">Каталог</span> / " + title)
 
@@ -90,7 +111,7 @@ function toProduct(id, title, category_id, category_title){
       }	       
    })
   .then(function(data) {
-    var html_start = "<div class=\"container\"><div class=\"row\"><div class=\"col-lg-12\"><div class=\"section-title\">"+title+"</div></div></div><div class=\"row product-wrap\"><div class=\"col-lg-4\"><div class=\"prod-img\"><img src=\"images/"+data.image+"\"></div></div><div class=\"col-lg-4\"></div><div class=\"col-lg-4\"><div class=\"prod-buy\"><div class=\"price\">"+data.price+" р</div><div class=\"deliv\">Доставка: доступна</div><div class=\"garant\">Гарантия: 24 мес.</div><div class=\"to-basket\">В корзину</div><div class=\"fav\">Избранное</div></div></div></div><div class=\"row\"><div class=\"col-lg-12\"><div class=\"characteristics-title\">Характеристики</div></div></div>"
+    var html_start = "<div class=\"container\"><div class=\"row\"><div class=\"col-lg-12\"><div class=\"section-title\">"+title+"</div></div></div><div class=\"row product-wrap\"><div class=\"col-lg-4\"><div class=\"prod-img\"><img src=\"images/"+data.image+"\"></div></div><div class=\"col-lg-4\"></div><div class=\"col-lg-4\"><div class=\"prod-buy\"><div class=\"price\">"+data.price+" р</div><div class=\"deliv\">Доставка: доступна</div><div class=\"garant\">Гарантия: 24 мес.</div><div class=\"to-basket\" onclick=AddProductBasket("+id+")>В корзину</div><div class=\"fav\">Избранное</div></div></div></div><div class=\"row\"><div class=\"col-lg-12\"><div class=\"characteristics-title\">Характеристики</div></div></div>"
     var html_content = "";
     var html_end = "</div>"
     for (i=0; i<data.description.length; i+=2) {
@@ -147,7 +168,7 @@ $('#autocomplete-1').keyup(function(){
 
     
 function SearchProducts(){
-    $('.search-btn').click(function() {
+    $('#find_search').click(function() {
             GoSearchProducts($('.search-text').val());
         })       
     
