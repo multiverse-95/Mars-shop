@@ -209,6 +209,72 @@ public class Service {
    }    
    return Response.ok(resultJSON).build();           
  }
+ 
+  //Добавление данных в БД
+ @POST   
+ @Path("/DeleteProductBasket")
+ @Consumes("application/json")
+ @Produces("application/json")
+ public Response DeleteProductBasket(String productJSON) 
+ {            
+   Jsonb jsonb = JsonbBuilder.create();          
+    Product product = new Product();
+   String resultJSON;
+   try {  
+      try { 
+       product = jsonb.fromJson(productJSON, Product.class);                    
+      }
+      catch (Exception e) {
+        throw new Exception("Error while JSON transforming.");  
+      }
+
+      model.DeleteProductBasket(product);
+
+      
+      
+	  resultJSON = jsonb.toJson(product);	  	 
+   }
+   catch (JsonbException e) {
+    return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();	             
+   }
+   catch (Exception e) {
+    return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();	             
+   }    
+   return Response.ok(resultJSON).build();           
+ }
+ 
+ //Добавление данных в БД
+ @POST   
+ @Path("/DeleteAllProductBasket")
+ @Consumes("application/json")
+ @Produces("application/json")
+ public Response DeleteAllProductBasket(String productJSON) 
+ {            
+   Jsonb jsonb = JsonbBuilder.create();          
+    Product product = new Product();
+   String resultJSON;
+   try {  
+      try { 
+       product = jsonb.fromJson(productJSON, Product.class);                    
+      }
+      catch (Exception e) {
+        throw new Exception("Error while JSON transforming.");  
+      }
+
+      model.DeleteAllProductBasket(product);
+
+      
+      
+	  resultJSON = jsonb.toJson(product);	  	 
+   }
+   catch (JsonbException e) {
+    return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();	             
+   }
+   catch (Exception e) {
+    return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();	             
+   }    
+   return Response.ok(resultJSON).build();           
+ }
   
   //Добавление данных в БД
  @POST   

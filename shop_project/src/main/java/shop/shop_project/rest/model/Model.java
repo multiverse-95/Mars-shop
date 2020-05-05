@@ -211,13 +211,19 @@ public class Model implements IModel  {
 			Connection con = ds.getConnection();
 			try 
 			{
+                                
 				Statement stmt = con.createStatement();   
-                                ResultSet rs = stmt.executeQuery("SELECT product_id FROM \"Sch_Shop\".\"Basket\" WHERE customer_id=1;");
+                                ResultSet rs = stmt.executeQuery("SELECT product_id FROM \"Sch_Shop\".\"Basket\" WHERE customer_id="+id+";");
 				//ResultSet rs = stmt.executeQuery("SELECT * FROM \"Sch_Shop\".\"Products\" where \"category_id\" = " + id);								
 				while (rs.next()) {
 
 					Product product = new Product();
 					product.setId(rs.getInt("product_id"));
+                                        Statement stmt0 = con.createStatement();   
+                                        ResultSet rs0 = stmt0.executeQuery("SELECT * FROM \"Sch_Shop\".\"Basket\" WHERE product_id="+rs.getInt("product_id")+" AND customer_id="+id+";");
+                                        while (rs0.next()) {product.setCount_products(rs0.getInt("number")); product.setPrice(rs0.getInt("price")); }
+                                        rs0.close();
+                                        stmt0.close();
 					//product.setName(rs.getString("name"));
 					//product.setPrice(rs.getInt("price"));
 
@@ -225,8 +231,14 @@ public class Model implements IModel  {
 					ResultSet rs2 = stmt2.executeQuery("SELECT * FROM \"Sch_Shop\".\"Products\" WHERE id="+rs.getInt("product_id")+";");
 					while (rs2.next()) { 
                                             product.setName(rs2.getString("name"));
-                                            product.setPrice(rs2.getInt("price"));
-                                            //product.setImage(rs2.getString("path")); 
+                                            //product.setPrice(rs2.getInt("price"));
+                                            product.setCategory_id(rs2.getInt("category_id")); 
+                                            
+                                            Statement stmt3 = con.createStatement();
+                                            ResultSet rs3 = stmt3.executeQuery("SELECT \"path\" FROM \"Sch_Shop\".\"Images\" where \"id\" = " + rs2.getString("image_id"));
+                                            while (rs3.next()) { product.setImage(rs3.getString("path")); }
+                                            rs3.close();
+                                            stmt3.close();
                                             
                                         }
 					rs2.close();
@@ -270,18 +282,117 @@ public class Model implements IModel  {
 			
             Connection con = ds.getConnection();
 
+            Integer count_prod=0;
+            Integer price=0;
+            try 
+			{
+                                Statement stmt2 = con.createStatement();
+                                ResultSet rs2 = stmt2.executeQuery("SELECT * FROM \"Sch_Shop\".\"Products\" WHERE id="+Product_id+";");
+                                while (rs2.next()) { price=rs2.getInt("price");}
+                                
+                                Statement stmt0 = con.createStatement();   
+                                ResultSet rs0 = stmt0.executeQuery("SELECT number FROM \"Sch_Shop\".\"Basket\" WHERE product_id="+Product_id+" AND customer_id="+User_id+";");							
+				while (rs0.next()) { count_prod=rs0.getInt("number"); }
+                                rs0.close();
+                                stmt0.close();
+                                if (count_prod<1){
+                                    Statement stmt = con.createStatement();                			
+                                    stmt.execute("INSERT INTO \"Sch_Shop\".\"Basket\" (customer_id, product_id,number,price)\n" +
+                                                                    " VALUES("+User_id+","+Product_id+",1,"+price+");");
+                                    stmt.close();
+                                } else{
+                                    count_prod+=1;
+                                    Statement stmt = con.createStatement();                			
+                                    stmt.execute("UPDATE \"Sch_Shop\".\"Basket\" SET number = "+count_prod+", price="+price*count_prod+" WHERE product_id="+Product_id+" AND customer_id="+User_id+";");
+                                    stmt.close();
+                                }
+                                								
+				
+				
+				
+            } finally {
+                con.close();
+                System.out.println("PRODUCT ID::: "+ Product_id);
+            }			
+        } 
+		catch (Exception e) 
+		{
+            throw new Exception("Error while JDBC operating: " + e.getMessage());
+        }
+		
+	}
+        
+        public void DeleteProductBasket(Product product) throws Exception {	
+            long Product_id;
+            long User_id;
+            Product_id=product.getId();
+            User_id=product.getUser_id();
+            
+            	
+            
+            try 
+		{			            
+		    try {	        
+	         InitialContext initialContext = new InitialContext();
+             ds = (DataSource) initialContext.lookup("jdbc/local_shop");
+	        }	
+	        catch(Exception e) {	        		      
+		      throw new Exception("Error while Data Source initializing: " + e.getMessage());
+	        }
+			
+            Connection con = ds.getConnection();
+
 
             try 
 			{
                                 Statement stmt = con.createStatement();                			
-				stmt.execute("INSERT INTO \"Sch_Shop\".\"Basket\" (customer_id, product_id,number,price)\n" +
-                                                                    " VALUES("+User_id+","+Product_id+",1,12323);");								
+				stmt.execute("DELETE FROM \"Sch_Shop\".\"Basket\" WHERE product_id="+Product_id+" AND customer_id="+User_id+";");								
 				
 				
 				stmt.close();
             } finally {
                 con.close();
                 System.out.println("PRODUCT ID::: "+ Product_id);
+            }			
+        } 
+		catch (Exception e) 
+		{
+            throw new Exception("Error while JDBC operating: " + e.getMessage());
+        }
+		
+	}
+        
+        public void DeleteAllProductBasket(Product product) throws Exception {	
+            //long Product_id;
+            long User_id;
+            //Product_id=product.getId();
+            User_id=product.getUser_id();
+            
+            	
+            
+            try 
+		{			            
+		    try {	        
+	         InitialContext initialContext = new InitialContext();
+             ds = (DataSource) initialContext.lookup("jdbc/local_shop");
+	        }	
+	        catch(Exception e) {	        		      
+		      throw new Exception("Error while Data Source initializing: " + e.getMessage());
+	        }
+			
+            Connection con = ds.getConnection();
+
+
+            try 
+			{
+                                Statement stmt = con.createStatement();                			
+				stmt.execute("DELETE FROM \"Sch_Shop\".\"Basket\" WHERE customer_id="+User_id+";");								
+				
+				
+				stmt.close();
+            } finally {
+                con.close();
+                System.out.println("USER ID::: "+ User_id);
             }			
         } 
 		catch (Exception e) 
@@ -320,6 +431,7 @@ public class Model implements IModel  {
 					product.setId(rs.getInt("id"));
 					product.setName(rs.getString("name"));
 					product.setPrice(rs.getInt("price"));
+                                        product.setCategory_id(rs.getInt("category_id"));
 
 					Statement stmt2 = con.createStatement();
 					ResultSet rs2 = stmt2.executeQuery("SELECT \"path\" FROM \"Sch_Shop\".\"Images\" where \"id\" = " + rs.getString("image_id"));
@@ -375,12 +487,12 @@ public class Model implements IModel  {
                         user.setFlag(true);
                         if (rs.getString("mail_index")==null){user.setMail_index(000000);} else{user.setMail_index(rs.getInt("mail_index"));}
                         if (rs.getString("avatar")==null){user.setAvatar("images/user.png");} else{user.setAvatar(rs.getString("avatar"));}
-                        if (rs.getString("first_name")==null){user.setFirst_name("не указано");} else{user.setFirst_name(rs.getString("first_name"));}
-                        if (rs.getString("second_name")==null){user.setSecond_name("не указано");} else{user.setSecond_name(rs.getString("second_name"));}
-                        if (rs.getString("third_name")==null){user.setThird_name("не указано");} else{user.setThird_name(rs.getString("third_name"));}
-                        if (rs.getString("country")==null){user.setCountry("не указано");} else{user.setCountry(rs.getString("country"));}
-                        if (rs.getString("city")==null){user.setCity("не указано");} else{user.setCity(rs.getString("city"));}
-                        if (rs.getString("street")==null){user.setStreet("не указано");} else{user.setStreet(rs.getString("street"));}
+                        if (rs.getString("first_name")==null){user.setFirst_name("");} else{user.setFirst_name(rs.getString("first_name"));}
+                        if (rs.getString("second_name")==null){user.setSecond_name("");} else{user.setSecond_name(rs.getString("second_name"));}
+                        if (rs.getString("third_name")==null){user.setThird_name("");} else{user.setThird_name(rs.getString("third_name"));}
+                        if (rs.getString("country")==null){user.setCountry("");} else{user.setCountry(rs.getString("country"));}
+                        if (rs.getString("city")==null){user.setCity("");} else{user.setCity(rs.getString("city"));}
+                        if (rs.getString("street")==null){user.setStreet("");} else{user.setStreet(rs.getString("street"));}
                         if (rs.getString("phone_number")==null){user.setPhone_number(00000000000);} else{user.setPhone_number(rs.getLong("phone_number"));}
                         user.setId(rs.getInt("id"));
                         user.setImail(rs.getString("imail")); 

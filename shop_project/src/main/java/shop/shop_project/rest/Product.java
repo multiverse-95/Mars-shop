@@ -14,6 +14,7 @@ public class Product
     private ArrayList<String> feature_name;
     private ArrayList<String> feature_value;
     private long user_id;
+    private Integer count_products;
 
     public long getId() {
         return id;
@@ -92,5 +93,13 @@ public class Product
 
     public void setUser_id(long user_id) {
         this.user_id = user_id;
+    }	
+    
+    public Integer getCount_products() {
+        return count_products;
+    }
+
+    public void setCount_products(Integer count_products) {
+        this.count_products = count_products;
     }	
 }

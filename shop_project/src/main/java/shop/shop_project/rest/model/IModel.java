@@ -17,4 +17,6 @@ public interface IModel  {
   void DeleteDBProduct(Product product) throws Exception;
   ArrayList<Product> GetProductsBasket(String id) throws Exception;
   void AddProductBasket(Product product) throws Exception;
+  void DeleteProductBasket(Product product) throws Exception;
+  void DeleteAllProductBasket(Product product) throws Exception;
 }
