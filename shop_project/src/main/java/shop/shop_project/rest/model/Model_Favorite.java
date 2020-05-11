@@ -5,16 +5,17 @@
  */
 package shop.shop_project.rest.model;
 
-import rest.User;
+import shop.shop_project.rest.model.interfaces.IModel_Favorite;
+import shop.shop_project.rest.dto.User;
 
 import java.sql.*;
 import java.util.ArrayList;
   
 import javax.sql.DataSource;
 import javax.naming.InitialContext;   
-import rest.Product;
-import rest.Category;
-import rest.User;
+import shop.shop_project.rest.dto.Product;
+import shop.shop_project.rest.dto.Category;
+import shop.shop_project.rest.dto.User;
 
 public class Model_Favorite implements IModel_Favorite {
 

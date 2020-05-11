@@ -1,9 +1,10 @@
 package rest.model;
 
+import shop.shop_project.rest.model.interfaces.IModel_Products;
 import rest.model.entity.EStudent;
-import rest.Product;
-import rest.Category;
-import rest.User;
+import shop.shop_project.rest.dto.Product;
+import shop.shop_project.rest.dto.Category;
+import shop.shop_project.rest.dto.User;
 
 
 import java.util.ArrayList;

@@ -1,7 +1,8 @@
 package shop.shop_project.rest.model;
-import rest.User;
-import rest.Category;
-import rest.Product;
+import shop.shop_project.rest.model.interfaces.IModel_LK;
+import shop.shop_project.rest.dto.User;
+import shop.shop_project.rest.dto.Category;
+import shop.shop_project.rest.dto.Product;
 
 import java.sql.*;
 import java.util.ArrayList;
