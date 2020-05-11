@@ -15,6 +15,24 @@ public class Product
     private ArrayList<String> feature_value;
     private long user_id;
     private Integer count_products;
+    private int order_id;
+    private int status;
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setOrder_id(int order_id) {
+        this.order_id = order_id;
+    }
+
+    public int getOrder_id() {
+        return order_id;
+    }
 
     public long getId() {
         return id;
