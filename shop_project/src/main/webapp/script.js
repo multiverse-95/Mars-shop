@@ -84,8 +84,7 @@ function toCategory(id, title){
         
       $(".favorite").each(function(key){
           $(this).click(function(){
-              alert('Product ID: '+arrayProdName[key])
-              
+            AddProductFav(arrayProdName[key])
           })
         });
          $(".buy").each(function(key){
@@ -118,7 +117,7 @@ function toProduct(id, title, category_id, category_title){
       }	       
    })
   .then(function(data) {
-    var html_start = "<div class=\"container\"><div class=\"row\"><div class=\"col-lg-12\"><div class=\"section-title\">"+title+"</div></div></div><div class=\"row product-wrap\"><div class=\"col-lg-4\"><div class=\"prod-img\"><img src=\"images/"+data.image+"\"></div></div><div class=\"col-lg-4\"></div><div class=\"col-lg-4\"><div class=\"prod-buy\"><div class=\"price\">"+data.price+" р</div><div class=\"deliv\">Доставка: доступна</div><div class=\"garant\">Гарантия: 24 мес.</div><div class=\"to-basket\" onclick=AddProductBasket("+id+")>В корзину</div><div class=\"fav\">Избранное</div></div></div></div><div class=\"row\"><div class=\"col-lg-12\"><div class=\"characteristics-title\">Характеристики</div></div></div>"
+    var html_start = "<div class=\"container\"><div class=\"row\"><div class=\"col-lg-12\"><div class=\"section-title\">"+title+"</div></div></div><div class=\"row product-wrap\"><div class=\"col-lg-4\"><div class=\"prod-img\"><img src=\"images/"+data.image+"\"></div></div><div class=\"col-lg-4\"></div><div class=\"col-lg-4\"><div class=\"prod-buy\"><div class=\"price\">"+data.price+" р</div><div class=\"deliv\">Доставка: доступна</div><div class=\"garant\">Гарантия: 24 мес.</div><div class=\"to-basket\" onclick=AddProductBasket("+id+")>В корзину</div><div class=\"fav\" onclick=AddProductFav("+id+")>Избранное</div></div></div></div><div class=\"row\"><div class=\"col-lg-12\"><div class=\"characteristics-title\">Характеристики</div></div></div>"
     var html_content = "";
     var html_end = "</div>"
     for (i=0; i<data.description.length; i+=2) {
@@ -226,8 +225,7 @@ function GoSearchProducts(search){
         
       $(".favorite").each(function(key){
           $(this).click(function(){
-              alert('Product ID: '+arrayProdName[key])
-              
+              AddProductFav(arrayProdName[key])
           })
         });
          $(".buy").each(function(key){

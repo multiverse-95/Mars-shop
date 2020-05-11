@@ -1,3 +1,53 @@
+.popup{
+    position: absolute;
+    bottom: -103px;
+    left: 25px;
+    background-color: #4e4e4e;
+    padding: 0px 10px 0px 10px;
+    color: #fff;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+    z-index: 99;
+}
+.popup:after {
+    content: '';
+    position: absolute;
+    right: -1px;
+    top: -65px;
+    border: 50px solid transparent;
+    border-bottom: 15px solid #4e4e4e;
+}
+.popup ul {
+    list-style-type: none;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    padding-inline-start: 0;
+}
+.popup li {
+    padding: 5px;
+}
+.popup li:hover {
+    cursor: pointer;
+    color:#da4a52;
+}
+.popup li:nth-child(1), .popup li:nth-child(2) {
+    border-bottom: 1px solid #fff;
+}
+.pacifier {
+    width: 120px;
+    height: 100%;
+    background-color: transparent;
+    position: absolute;
+    z-index: 100;
+}
+/* .pacifier:hover ~ .popup, .pacifier ~ .popup:hover {
+    visibility: visible;
+    opacity: 1;
+} */
+.pacifier:hover {
+    cursor: pointer;
+}
 .lk{
     display: flex;
     justify-content: center;
@@ -5,10 +55,7 @@
     height: 60px;
     width: 100%;
 }
-.lk-onClk:hover {
-    cursor: pointer;
-    box-shadow: 0 10px 10px 0 rgba(0,0,0,0.05), 0 29px 26px 0 rgba(0,0,0,0.08);
-}
+
 .lk-wrap{
     display: flex;
     align-items: center;
@@ -17,6 +64,7 @@
     width: 50px;
     background-color: #fff;
     border-radius: 40px;
+    z-index: 50;
 }
 .lk img{
     height: 95%;
@@ -28,7 +76,6 @@
     align-items: center;
     width: auto;
     justify-content: center;
-    padding: 5px;
     border-radius: 7px;
 }
 .lk p{
@@ -45,7 +92,7 @@
     padding: 15px;
     color: white;
     text-align: center;
-    font-size: 30px;
+    font-size: 24px;
     background-color: #bc2a3a;
     box-shadow: 0 0 4px 0 rgba(0,0,0,0.5);
     border-radius: 8px 8px 0 0;
@@ -100,16 +147,17 @@
     padding: 5px 15px 5px 15px;
     margin: 0;
 }
-.lk-order-description {
+.lk-order-description, .lk-basket-description {
     margin: 0;
     width: 100%;
+    z-index: 400;
     display: flex; 
     flex-direction: row; 
     padding: 10px 0 10px 0;
     border-bottom: 1px solid lightgray;
 }
 
-.lk-order-description:hover{
+.lk-basket-description:hover{
     cursor: pointer;
     margin: 0;
     width: 100%;
@@ -189,6 +237,50 @@
     border-radius: 8px 0 8px 0; 
     margin: 0 0 0 3px; 
     box-shadow: 0 0 8px 0 rgba(0,0,0,1);   
+}
+
+.orderOk, #leave-lk, #inp-yes, #inp-no, #inp-yes-or, #inp-no-or, .fav-buy{
+    color: white;
+    background-color: #bc2a3a;
+    border-radius: 8px;
+    border: 0;
+    z-index: 900;
+    padding: 0 10px 0 10px; 
+}
+.orderOk:hover, #leave-lk:hover, #inp-yes:hover, #inp-no:hover, #inp-yes-or:hover, #inp-no-or:hover, .fav-buy:hover{
+    box-shadow: 0 0 4px 0 rgba(0,0,0,0.5);
+    z-index: 900;
+}
+.orderOk:active, #leave-lk:active, #inp-yes:active, #inp-no:active, #inp-yes-or:active, #inp-no-or:active, .fav-buy:active{
+    box-shadow: inset 1px 1px 5px -1px lightgray;
+    z-index: 900;
+}
+.orderOk:focus, #leave-lk:focus, #inp-yes:focus, #inp-no:focus, #inp-yes-or:focus, #inp-no-or:focus, .fav-buy:focus{
+    outline: none;
+    z-index: 900;
+}
+.popup-order, .popup-order-lk{
+    box-shadow: 0 0 4px 0 rgba(0,0,0,0.5);
+    display: none;
+    border: 1px solid grey;
+    position: absolute;
+    padding: 0px 10px 0px 10px;
+    background-color: white;
+    color: #000;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+#Errors, #Errors-reg, #tnx, #email-er{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#Errors p, #Errors-reg p, #tnx p, #email-er p{
+    text-align: center;
+    color: red;
 }
 
 

@@ -23,6 +23,7 @@
         <link rel="stylesheet" href="styles/lk_style.css">
         <link rel="stylesheet" href="styles/auth_style.css">
         <link rel="stylesheet" href="styles/basket_style.css">
+        <link rel="stylesheet" href="styles/fav_style.css">
 
         
         <script src="script.js"></script>  
@@ -38,10 +39,11 @@
            <div class="inputs-form">
              <input id="inp-login" type="text" name="login" placeholder="Логин">
              <input id="inp-pass" type="password" name="pass" placeholder="Пароль">
+             <div id='Errors'></div>
            </div>
            <div class="signup-ref">
                <p>
-                 Впервые здесь? Тогда<a href=# id="reg-ref">зарегистрируйтесь</a><br>
+                 Впервые здесь? Тогда<a id="reg-ref">зарегистрируйтесь</a><br>
                </p>
 
            </div>
@@ -53,14 +55,15 @@
           <div class="login-header">
               <p>Форма регистрации</p>
           </div>
-            <div class="inputs-form">
-              <input id="inp-login" type="text" name="login" placeholder="Логин">
-              <input id="inp-email" type="text" name="login" placeholder="Email">
-              <input id="inp-pass" type="password" name="pass" placeholder="Пароль">
-              <input id="inp-pass-rep" type="password" name="pass" placeholder="Повтор пароля">
+            <div class="inputs-form-reg">
+              <input id="inp-login-reg" type="text" name="login" placeholder="Логин">
+              <input id="inp-email-reg" type="text" name="login" placeholder="Email">
+              <input id="inp-pass-reg" type="password" name="pass" placeholder="Пароль">
+              <input id="inp-pass-reg-rep" type="password" name="pass-rep" placeholder="Повтор пароля">
+              <div id='Errors-reg'></div>
            </div>
 
-           <input id="SignUp" type="button" value="Зарегестрироваться">
+           <input id="SignUp" type="button" value="Зарегистрироваться">
 
         </div>
 
@@ -82,10 +85,18 @@
               </div>
               <div class="col-lg-2">
                 <div class="lk">
+                  <div class="pacifier"></div>
                   <div class="lk-onClk"> 
-                        <div class="lk-wrap"><img src="images/user.png"></div>
-                        <p id="user_name">Гость</p>
-                    </div>
+                    <div class="lk-wrap"><img src="images/user.png"></div>
+                    <p id="user_name">Гость</p>
+                  </div>
+                  <div class="popup">
+                    <ul>
+                      <li class="h-basket">Корзина</li>
+                      <li class="h-favorite">Желаемое</li>
+                      <li class="h-logout">Выйти</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
